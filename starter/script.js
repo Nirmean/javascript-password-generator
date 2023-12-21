@@ -23,13 +23,13 @@ var specialCharacters = [
     '-',
     '_',
     '.'
-  ];
-  
-  // Array of numeric characters to be included in password
-  var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  
-  // Array of lowercase characters to be included in password
-  var lowerCasedCharacters = [
+];
+
+// Array of numeric characters to be included in password
+var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+// Array of lowercase characters to be included in password
+var lowerCasedCharacters = [
     'a',
     'b',
     'c',
@@ -56,10 +56,10 @@ var specialCharacters = [
     'x',
     'y',
     'z'
-  ];
-  
-  // Array of uppercase characters to be included in password
-  var upperCasedCharacters = [
+];
+
+// Array of uppercase characters to be included in password
+var upperCasedCharacters = [
     'A',
     'B',
     'C',
@@ -86,18 +86,18 @@ var specialCharacters = [
     'X',
     'Y',
     'Z'
-  ];
-  
+];
 
-  // Function to prompt user for password options
+
+// Function to prompt user for password options
 function getPasswordOptions() {
     // Prompt for password length
     var passwordLength = prompt("Enter password length (between 8 and 128 characters):");
-    
+
     // Validate password length
     if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
-      alert("Please enter a valid password length between 8 and 128 characters.");
-      return;
+        alert("Please enter a valid password length between 8 and 128 characters.");
+        return;
     }
 
     // Confirm character types
@@ -120,4 +120,13 @@ function getPasswordOptions() {
         includeNumeric: includeNumeric,
         includeSpecial: includeSpecial
     };
+
+    // Return the password options
+    return passwordOptions;
 };
+
+// Function for getting a random element from an array
+function getRandom(arr) {
+    var randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+}

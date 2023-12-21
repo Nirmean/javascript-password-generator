@@ -108,7 +108,7 @@ function getPasswordOptions() {
 
     // Validate at least one character type is selected
     if (!includeLower && !includeUpper && !includeNumeric && !includeSpecial) {
-        alert("Please select at least one character type.");
+        alert("Please try again and select at least one character type.");
         return;
     }
 
@@ -136,29 +136,42 @@ function generatePassword() {
     var options = getPasswordOptions();
     var allCharacters = [];
     var result = "";
-  
+
     // Concatenate selected character types
     if (options.includeLower) {
-      allCharacters = allCharacters.concat(lowerCasedCharacters);
+        allCharacters = allCharacters.concat(lowerCasedCharacters);
     }
     if (options.includeUpper) {
-      allCharacters = allCharacters.concat(upperCasedCharacters);
+        allCharacters = allCharacters.concat(upperCasedCharacters);
     }
     if (options.includeNumeric) {
-      allCharacters = allCharacters.concat(numericCharacters);
+        allCharacters = allCharacters.concat(numericCharacters);
     }
     if (options.includeSpecial) {
-      allCharacters = allCharacters.concat(specialCharacters);
+        allCharacters = allCharacters.concat(specialCharacters);
     }
-  
+
     // Generate password
     for (var i = 0; i < options.length; i++) {
-      var randomChar = getRandom(allCharacters);
-      result += randomChar;
+        var randomChar = getRandom(allCharacters);
+        result += randomChar;
     }
-  
+
     // Return the generated password
     return result;
-  }
+}
 
-  
+// Get references to the #generate element
+var generateBtn = document.querySelector('#generate');
+
+// Write password to the #password input
+function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector('#password');
+
+    passwordText.value = password;
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener('click', writePassword);
+

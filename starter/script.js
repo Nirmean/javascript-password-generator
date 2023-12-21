@@ -130,3 +130,35 @@ function getRandom(arr) {
     var randomIndex = Math.floor(Math.random() * arr.length);
     return arr[randomIndex];
 }
+
+// Function to generate password with user input
+function generatePassword() {
+    var options = getPasswordOptions();
+    var allCharacters = [];
+    var result = "";
+  
+    // Concatenate selected character types
+    if (options.includeLower) {
+      allCharacters = allCharacters.concat(lowerCasedCharacters);
+    }
+    if (options.includeUpper) {
+      allCharacters = allCharacters.concat(upperCasedCharacters);
+    }
+    if (options.includeNumeric) {
+      allCharacters = allCharacters.concat(numericCharacters);
+    }
+    if (options.includeSpecial) {
+      allCharacters = allCharacters.concat(specialCharacters);
+    }
+  
+    // Generate password
+    for (var i = 0; i < options.length; i++) {
+      var randomChar = getRandom(allCharacters);
+      result += randomChar;
+    }
+  
+    // Return the generated password
+    return result;
+  }
+
+  

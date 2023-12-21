@@ -111,4 +111,13 @@ function getPasswordOptions() {
         alert("Please select at least one character type.");
         return;
     }
+
+    // Object to store user input
+    var passwordOptions = {
+        length: passwordLength,
+        includeLower: includeLower,
+        includeUpper: includeUpper,
+        includeNumeric: includeNumeric,
+        includeSpecial: includeSpecial
+    };
 };
